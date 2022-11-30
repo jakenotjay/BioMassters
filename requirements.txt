@@ -1,0 +1,5 @@
+xarray
+rioxarray
+matplotlib
+numpy
+scipy
