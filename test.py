@@ -1,3 +1,3 @@
 import downloader
 
-downloader.downloadNChips(5, "test", "eu")
+downloader.downloadNChips(1, "test", "eu")

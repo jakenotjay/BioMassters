@@ -136,10 +136,17 @@ def downloadNChips(n, download_dir, region):
     """
     checkForDownloadDir(download_dir)
 
+    # get the path to this folder
+    path = os.path.dirname(os.path.realpath(__file__))
+    # join with meta folder
+    path = os.path.join(path, "meta")
+
+
+
     # open agbm metadata
-    agbm_metadata = pd.read_csv("meta/train_agbm_metadata.csv")
+    agbm_metadata = pd.read_csv(os.path.join(path, "train_agbm_metadata.csv"))
     # open features metadata
-    features_metadata = pd.read_csv("meta/features_metadata.csv")
+    features_metadata = pd.read_csv(os.path.join(path, "features_metadata.csv"))
 
     # choose a random subset of the agbm metadata
     agbm_metadata = agbm_metadata.sample(n=n)
