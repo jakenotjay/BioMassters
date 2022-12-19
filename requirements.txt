@@ -3,3 +3,5 @@ rioxarray
 matplotlib
 numpy
 scipy
+pandas
+boto3
