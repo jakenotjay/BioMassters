@@ -126,7 +126,7 @@ def checkForDownloadDir(download_dir):
     if not os.path.exists(os.path.join(download_dir, "train_agbm")):
         os.makedirs(os.path.join(download_dir, "train_agbm"))
     
-def downloadNChips(n, download_dir, region):
+def downloadNChips(n, download_dir, region, metadataFolder="meta"):
     """Downloads N random files from the dataset, including both satellite and Lidar
     
     Args:
@@ -136,12 +136,8 @@ def downloadNChips(n, download_dir, region):
     """
     checkForDownloadDir(download_dir)
 
-    # get the path to this folder
-    path = os.path.dirname(os.path.realpath(__file__))
     # join with meta folder
-    path = os.path.join(path, "meta")
-
-
+    path = metadataFolder
 
     # open agbm metadata
     agbm_metadata = pd.read_csv(os.path.join(path, "train_agbm_metadata.csv"))
