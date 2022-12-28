@@ -24,21 +24,9 @@ def getFilesForChip(chip: str, platform: Optional[str] = None) -> List[str]:
         List: list of file paths
     """
     if platform is None:
-        return platformToFiles['agb'](chip) + platformToFiles['s1'](chip) + platformToFiles['s2'](chip)
+        return platformToFiles['AGB'](chip) + platformToFiles['S1'](chip) + platformToFiles['S2'](chip)
 
     if platform in platformToFiles:
         return platformToFiles[platform](chip)
     else:
         raise ValueError(f'Platform {platform} not found, must be one of {platformToFiles.keys()}')
-
-def getRasters(files: List[str]) -> xr.DataArray:
-    """Open a list of raster files and return a single xr.DataArray with a new time dimension
-    
-    Args:
-        files (List[str]): list of file paths
-    
-    Returns:
-        xr.DataArray: single xr.DataArray
-    """
-    rasters = [rxr.open_rasterio(f) for f in files]
-    return xr.concat(rasters, dim="time")
